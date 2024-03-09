@@ -1,7 +1,10 @@
 {% extends "basepage.html" %}
 
-{% block title %} Заметки {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block content%}
-<h1> Заметки </h1>
+<h1> {{ title }} </h1>
+{% for note in notes %}
+<p class="my-note">{{ note }}</p>
+{% endfor %}
 {% endblock%}

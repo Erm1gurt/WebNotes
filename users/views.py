@@ -1,6 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView
 
@@ -39,3 +40,4 @@ class RegUser(CreateView):
 @login_required
 def logout_user(request):
     logout(request)
+    return redirect('users:login')
