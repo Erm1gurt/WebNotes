@@ -1,0 +1,37 @@
+a {font-size: 120%}
+
+.active {
+            color: green;
+            background-color: blue;
+            border: 3px solid blue;
+            border-radius: 8px;
+        }
+
+body {
+            background-color: LightSkyBlue
+            }
+
+.box div {
+            width: 30%;
+            display:inline-block;
+            }
+
+.button {
+            margin-left: 10px;
+            }
+
+.container {
+            overflow:hidden;
+            background-color: DeepSkyBlue;
+            }
+
+.menu_bar {
+            background-color: DeepSkyBlue;
+            }
+.ul_top_hypers li{
+            display: inline;
+            }
+.username {
+            font-size: 120%;
+            color: DarkMagenta
+            }
