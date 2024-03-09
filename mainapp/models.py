@@ -12,5 +12,8 @@ class Notes(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-time_create']
+
     def __str__(self):
         return self.note_text
