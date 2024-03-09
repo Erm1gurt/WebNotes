@@ -1,8 +1,13 @@
 {% load static %}
+{% load usertags %}
+{% load maintags %}
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%  user_menu as user_menu %}
+    {%  main_menu as main_menu %}
     <meta charset="UTF-8">
     <link type="text/css" href='{% static "css/config.css" %}' rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
@@ -12,22 +17,35 @@
     <div class="box">
         <div class="menu_bar">
             <ul class="ul_top_hypers">
+                {% for menu_button in main_menu%}
                 <li class="button">
-                    <a class="{% if page == '/home' %} active {% endif %}" href="{% url 'home' %}">Главная</a>
+                    <a class="{% if page == menu_button.id %} active {% endif %}" href="{% url menu_button.id %}">{{ menu_button.name }}</a>
                 </li>
-                <li class="button">
-                    <a class="{% if page == '/notes' %} active {% endif %}" href="{% url 'notes' %}">Заметки</a>
-                </li>
-                <li class="button">
-                    <a class="{% if page == '/add_note' %} active {% endif %}" href="{% url 'add_note' %}">Создать заметку</a>
-                </li>
-
+                {% endfor %}
             </ul>
         </div>
-
+        <div class="menu_bar">
+            <ul class="ul_top_hypers">
+                {% if not user.is_authenticated %}
+                {% for menu_button in user_menu %}
+                <li class="button">
+                    <a class="{% if page == menu_button.id %} active {% endif %}" href="{% url menu_button.id %}">{{ menu_button.name }}</a>
+                </li>
+                {% endfor %}
+                {% else %}
+                <li class="username">
+                    {{ user.username }}
+                </li>
+                <li class="button">
+                    <a href="{% url 'users:logout' %}">Выйти</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>
-{% block content%}
+
+{% block content %}
 
 {% endblock %}
 </body>
