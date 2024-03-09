@@ -25,6 +25,11 @@ body {
             background-color: DeepSkyBlue;
             }
 
+.messages {
+            color:red;
+            font-size:110%;
+            }
+
 .menu_bar {
             background-color: DeepSkyBlue;
             }
